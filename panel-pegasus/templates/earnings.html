@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganancias</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ganancias</h1>
+    
+    <p>Total de Ganancias: ${{ total_earnings }}</p>
+    
+    <form method="get" action="{{ url_for('earnings') }}">
+        <label for="start_date">Fecha de Inicio:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ start_date }}">
+        <label for="end_date">Fecha de Fin:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ end_date }}">
+        <input type="submit" value="Filtrar">
+    </form>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Usuario</th>
+            <th>Créditos</th>
+            <th>Monto</th>
+            <th>Fecha de Recarga</th>
+            <th>Imagen</th>
+        </tr>
+        {% for recharge in recharges %}
+        <tr>
+            <td>{{ recharge[0] }}</td>
+            <td>{{ recharge[2] }}</td>
+            <td>{{ recharge[3] }}</td>
+            <td>${{ recharge[4] }}</td>
+            <td>{{ recharge[5] }}</td>
+            <td>
+                {% if recharge[6] %}
+                <a href="{{ recharge[6] }}" target="_blank">Ver Imagen</a>
+                {% else %}
+                No disponible
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

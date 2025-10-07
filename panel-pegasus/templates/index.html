@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegasus Club | Web App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Pegasus Club | Web App</h1>
+    <ul>
+        <li><a href="{{ url_for('create') }}">Crear usuario</a></li>
+        <li><a href="{{ url_for('read_users') }}">Leer usuarios</a></li>
+        <li><a href="{{ url_for('earnings') }}">Ver Ganancias</a></li>
+        <li><a href="{{ url_for('keys') }}">Ver Keys</a></li>
+         <!-- Nuevo enlace -->
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+</html>

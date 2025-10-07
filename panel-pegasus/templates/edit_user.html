@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Editar Usuario</h1>
+
+    <form id="edit-user-form" method="post" action="{{ url_for('edit_user', user_id=user[0]) }}" enctype="multipart/form-data">
+        <label for="plan">Selecciona un plan de recarga:</label>
+        <select name="plan" id="plan" required>
+            <option value="0">No Créditos</option>
+            <option value="350">350 Créditos - $70K</option>
+            <option value="750">750 Créditos - $115K</option>
+            <option value="1500">1500 Créditos - $190K</option>
+            <option value="2500">2500 Créditos - $180K</option>
+
+            <option value="385">350 Créditos + 10% - $70K</option>
+            <option value="825">750 Créditos + 10% - $115K</option>
+            <option value="1650">1500 Créditos + 10% - $190K</option>
+            <option value="2750">2500 Créditos + 10% - $180K</option>
+            
+            <option value="420">350 Créditos + 20% - $70K</option>
+            <option value="900">750 Créditos + 20% - $115K</option>
+            <option value="1800">1500 Créditos + 20% - $190K</option>
+            <option value="3000">2500 Créditos + 20% - $180K</option>
+        </select><br>
+
+        <label for="phone">Teléfono/WhatsApp:</label>
+        <input type="tel" name="phone" value="{{ user[5] }}" required><br>
+
+        <label for="new_password">Nueva Contraseña (opcional):</label>
+        <input type="password" name="new_password" placeholder="Deja en blanco para mantener la contraseña actual"><br>
+
+        <label for="image">Subir Comprobante:</label>
+        <input type="file" name="image" id="image"><br>
+
+        <input type="submit" value="Guardar Cambios">
+    </form>
+
+    <a href="{{ url_for('read_users') }}" class="back-button">Volver a Leer Usuarios</a>
+
+    <script>
+        document.getElementById('plan').addEventListener('change', function() {
+            const plan = parseInt(this.value);
+            const imageInput = document.getElementById('image');
+
+            if (plan !== 0) {
+                imageInput.setAttribute('required', 'required');
+            } else {
+                imageInput.removeAttribute('required');
+            }
+        });
+    </script>
+</body>
+</html>

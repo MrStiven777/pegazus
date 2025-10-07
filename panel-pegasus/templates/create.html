@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear usuario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Crear usuario</h1>
+    <form method="post" action="{{ url_for('create') }}" enctype="multipart/form-data">
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" name="username" required><br>
+
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" required><br>
+
+        <label for="credits">Plan de Créditos:</label>
+        <select name="credits" required>
+            <option value="350">350 Créditos - $70K</option>
+            <option value="750">750 Créditos - $115K</option>
+            <option value="1500">1500 Créditos - $190K</option>
+            <option value="2500">2500 Créditos - $180K</option>
+            <option value="385">350 Créditos + 10% - $70K</option>
+            <option value="770">750 Créditos + 10% - $115K</option>
+            <option value="1650">1500 Créditos + 10% - $190K</option>
+            <option value="2750">2500 Créditos + 10% - $180K</option>
+            <option value="420">350 Créditos + 20% - $70K</option>
+            <option value="900">750 Créditos + 20% - $115K</option>
+            <option value="1800">1500 Créditos + 20% - $190K</option>
+            <option value="3000">2500 Créditos + 20% - $180K</option>
+        </select><br>
+
+        <label for="phone">Teléfono/WhatsApp:</label>
+        <input type="tel" name="phone" required><br>
+        
+        <label for="image">Adjuntar imagen:</label>
+        <input type="file" name="image" accept="image/*" required><br>
+
+        <input type="submit" value="Crear usuario">
+    </form>
+</body>
+</html>
